@@ -11,7 +11,7 @@
       "price": 490,
       "stock": 12,
       "description": "Comfortable wireless listening.",
-      "emoji": "\ud83c\udfa7"
+      "emoji": "🎧"
     },
     {
       "id": "p2",
@@ -20,7 +20,7 @@
       "price": 890,
       "stock": 8,
       "description": "Everyday smartwatch style.",
-      "emoji": "\u231a"
+      "emoji": "⌚"
     },
     {
       "id": "p3",
@@ -29,7 +29,7 @@
       "price": 120,
       "stock": 30,
       "description": "Handy charging and data cable.",
-      "emoji": "\ud83d\udd0c"
+      "emoji": "🔌"
     },
     {
       "id": "p4",
@@ -38,7 +38,7 @@
       "price": 650,
       "stock": 10,
       "description": "Portable audio for everyday use.",
-      "emoji": "\ud83d\udd0a"
+      "emoji": "🔊"
     },
     {
       "id": "p5",
@@ -47,7 +47,7 @@
       "price": 150,
       "stock": 20,
       "description": "Convenient desk phone holder.",
-      "emoji": "\ud83d\udcf1"
+      "emoji": "📱"
     },
     {
       "id": "p6",
@@ -56,7 +56,7 @@
       "price": 290,
       "stock": 14,
       "description": "Compact mouse for work and study.",
-      "emoji": "\ud83d\uddb1\ufe0f"
+      "emoji": "🖱️"
     },
     {
       "id": "p7",
@@ -65,7 +65,7 @@
       "price": 590,
       "stock": 9,
       "description": "Portable charging on the go.",
-      "emoji": "\ud83d\udd0b"
+      "emoji": "🔋"
     },
     {
       "id": "p8",
@@ -74,7 +74,124 @@
       "price": 990,
       "stock": 6,
       "description": "Keyboard for your desktop setup.",
-      "emoji": "\u2328\ufe0f"
+      "emoji": "⌨️"
+    },
+    {
+      "id": "repair-1",
+      "name": "Screen Replacement",
+      "category": "Mobile Phone Repair Services",
+      "price": 450,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "📱"
+    },
+    {
+      "id": "repair-2",
+      "name": "Battery Replacement",
+      "category": "Mobile Phone Repair Services",
+      "price": 250,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "🔋"
+    },
+    {
+      "id": "repair-3",
+      "name": "Charging Port Repair",
+      "category": "Mobile Phone Repair Services",
+      "price": 200,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "🔌"
+    },
+    {
+      "id": "repair-4",
+      "name": "Back Glass Replacement",
+      "category": "Mobile Phone Repair Services",
+      "price": 350,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "📱"
+    },
+    {
+      "id": "repair-5",
+      "name": "Camera Repair",
+      "category": "Mobile Phone Repair Services",
+      "price": 300,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "📷"
+    },
+    {
+      "id": "repair-6",
+      "name": "Speaker Repair",
+      "category": "Mobile Phone Repair Services",
+      "price": 180,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "🔊"
+    },
+    {
+      "id": "repair-7",
+      "name": "Microphone Repair",
+      "category": "Mobile Phone Repair Services",
+      "price": 180,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "🎤"
+    },
+    {
+      "id": "repair-8",
+      "name": "Power Button Repair",
+      "category": "Mobile Phone Repair Services",
+      "price": 200,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "⚙️"
+    },
+    {
+      "id": "repair-9",
+      "name": "Software Troubleshooting",
+      "category": "Mobile Phone Repair Services",
+      "price": 100,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "💻"
+    },
+    {
+      "id": "repair-10",
+      "name": "Phone Reset & Setup",
+      "category": "Mobile Phone Repair Services",
+      "price": 100,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "📲"
+    },
+    {
+      "id": "repair-11",
+      "name": "Data Transfer",
+      "category": "Mobile Phone Repair Services",
+      "price": 150,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "📂"
+    },
+    {
+      "id": "repair-12",
+      "name": "Water Damage Inspection",
+      "category": "Mobile Phone Repair Services",
+      "price": 150,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "💧"
+    },
+    {
+      "id": "repair-13",
+      "name": "Phone Diagnosis",
+      "category": "Mobile Phone Repair Services",
+      "price": 50,
+      "stock": 1,
+      "description": "Starting price only. Final quote depends on phone model, parts and repair requirements. Contact us before booking. Service enquiry only.",
+      "emoji": "🔎"
     }
   ]
 }
