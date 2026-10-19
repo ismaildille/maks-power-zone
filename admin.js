@@ -26,7 +26,7 @@ onAuthStateChanged(auth,async user=>{
   $('#identity').textContent=user.email;
   try{
     const snap=await getDoc(ref);
-    if(if(!snap.exists() || (snap.data().initialized === true && !Array.isArray(snap.data().products))){
+    if(!snap.exists() || (snap.data().initialized === true && !Array.isArray(snap.data().products))){
       status('Owner signed in. Importing the existing catalog…');
       const r=await fetch('./catalog.json',{cache:'no-store'});if(!r.ok)throw Error('catalog.json missing');
       await persist(await r.json());
