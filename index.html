@@ -1,42 +1,166 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#071323"><meta name="description" content="MAK's Power Zone - gadgets, accessories and everyday tech.">
-<title>MAK's Power Zone | Electronics & Accessories</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAK’s Power Zone</title>
 <style>
-:root{--bg:#071323;--panel:#101f34;--line:#29405b;--blue:#39b9ff;--text:#eef7ff;--muted:#a9bdd3}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
-header{position:sticky;top:0;z-index:10;background:#09182af5;border-bottom:1px solid var(--line)}.wrap{max-width:1180px;margin:auto;padding:0 20px}.nav{min-height:74px;display:flex;gap:16px;align-items:center;justify-content:space-between}.brand{font-weight:900;font-size:22px;letter-spacing:-.6px}.brand span{color:var(--blue)}.navlinks{display:flex;gap:16px;align-items:center}.btn{border:0;background:var(--blue);color:#001321;border-radius:12px;padding:12px 17px;font-weight:800}.btn.alt{background:#213650;color:var(--text)}.btn:disabled{opacity:.5;cursor:not-allowed}
-.hero{padding:70px 0;background:radial-gradient(circle at 80% 30%,#105a86 0%,#071323 55%)}.hero-inner{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center}.eyebrow{color:var(--blue);font-weight:800;letter-spacing:2px;font-size:12px}.hero h1{font-size:clamp(38px,6vw,70px);line-height:1.06;margin:14px 0}.hero p{color:var(--muted);font-size:18px;max-width:560px;line-height:1.6}.heroart{font-size:140px;text-align:center;filter:drop-shadow(0 0 35px #2bbcff77)}
-section{padding:36px 0}h2{margin:0 0 20px;font-size:28px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}.field{padding:13px;border-radius:10px;border:1px solid var(--line);background:#10233a;color:var(--text);min-width:0}.toolbar input{flex:1;min-width:190px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.product{border:1px solid var(--line);background:var(--panel);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}.photo{height:175px;background:linear-gradient(140deg,#1d3859,#0d1a2e);display:grid;place-items:center;font-size:80px}.photo img{width:100%;height:100%;object-fit:cover}.info{padding:16px;display:flex;flex:1;flex-direction:column;gap:9px}.tag{color:var(--blue);font-size:12px;font-weight:700}.info h3{margin:0;font-size:17px}.desc{color:var(--muted);font-size:13px;line-height:1.4;flex:1}.price{font-size:20px;font-weight:900}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:15px}.feature p,footer{color:var(--muted)}footer{border-top:1px solid var(--line);padding:28px 0;margin-top:45px}.overlay{position:fixed;inset:0;background:#000b;z-index:20;display:none}.overlay.show{display:block}.drawer{position:fixed;right:0;top:0;bottom:0;width:min(440px,100%);background:#0d1c30;z-index:21;transform:translateX(110%);transition:.2s;padding:22px;overflow:auto;box-shadow:-10px 0 40px #0007}.drawer.show{transform:none}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.cartitem{padding:15px 0;border-bottom:1px solid var(--line)}.muted{color:var(--muted)}.qty{display:flex;align-items:center;gap:10px}.qty button{background:#243c58;color:white;border:0;border-radius:7px;padding:5px 11px}.form{display:grid;gap:12px}.form label{display:grid;gap:6px;font-size:14px}.form input,.form textarea,.form select{width:100%}.notice{background:#15334b;border:1px solid #2a6080;padding:14px;border-radius:12px;line-height:1.5;font-size:13px}.admin{display:none}.admin.show{display:block}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.adminbox{padding:22px;border-radius:16px;background:var(--panel);border:1px solid var(--line)}.adminbox h3{margin-top:0}.full{width:100%}.empty{padding:25px;color:var(--muted);text-align:center}.small{font-size:12px}.danger{color:#ffadb0}
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-inner{grid-template-columns:1fr}.heroart{display:none}.features{grid-template-columns:1fr}.admin-grid{grid-template-columns:1fr}}@media(max-width:460px){.grid{grid-template-columns:1fr}.brand{font-size:18px}.navlinks{gap:8px}.navlinks a{display:none}.nav .btn{padding:10px}}
-</style></head><body>
-<header><div class="wrap nav"><a class="brand" href="#">MAK's <span>POWER ZONE</span></a><nav class="navlinks"><a href="#shop">Shop</a><a href="#about">About</a><button class="btn" id="cartBtn">Cart (<span id="count">0</span>)</button></nav></div></header>
-<main><div class="hero"><div class="wrap hero-inner"><div><div class="eyebrow">TECH • GADGETS • ACCESSORIES</div><h1>Power up<br>your everyday.</h1><p>Explore practical tech, everyday essentials and accessories at MAK's Power Zone.</p><a href="#shop" class="btn" style="display:inline-block">Shop now →</a></div><div class="heroart" aria-hidden="true">⚡</div></div></div>
-<section id="shop"><div class="wrap"><h2>Shop products</h2><div class="toolbar"><input id="search" class="field" placeholder="Search products…" aria-label="Search products"><select id="category" class="field" aria-label="Category"><option value="">All categories</option></select><select id="sort" class="field" aria-label="Sort"><option value="default">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></div><div id="products" class="grid"></div></div></section>
-<section id="about"><div class="wrap"><h2>Why shop with us?</h2><div class="features"><div class="feature"><h3>⚡ Useful tech</h3><p>Products for your daily routine.</p></div><div class="feature"><h3>🛒 Easy ordering</h3><p>Build a cart and send an order request.</p></div><div class="feature"><h3>📱 Mobile friendly</h3><p>Browse comfortably on phones and computers.</p></div></div></div></section>
-</main>
-<footer><div class="wrap row"><div>© <span id="year"></span> MAK's Power Zone. All rights reserved.</div><button id="owner" class="btn alt">Store owner</button></div></footer>
-<div class="overlay" id="overlay"></div><aside class="drawer" id="drawer" aria-label="Shopping cart"><div class="row"><h2>Your cart</h2><button class="btn alt" id="close">Close ×</button></div><div id="cartitems"></div><div class="row"><strong>Total</strong><strong id="total"></strong></div><p class="small muted">This is an order request, not an online payment. Prices and availability must be confirmed by the seller.</p><h3>Checkout details</h3><form class="form" id="checkout"><label>Your name<input class="field" id="customer" required autocomplete="name"></label><label>Phone / contact<input class="field" id="phone" required autocomplete="tel"></label><label>Delivery location<input class="field" id="address" required></label><label>Notes (optional)<textarea class="field" id="notes"></textarea></label><button class="btn full">Send order via WhatsApp</button></form><p id="checkoutmsg" class="small muted"></p></aside>
-<script>
-const $=s=>document.querySelector(s);
-let catalog={settings:{currency:'MVR',whatsapp:''},products:[]},cart={};
-const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const money=n=>`${safe(catalog.settings.currency||'MVR')} ${Number(n).toFixed(2)}`;
-function loadCart(){try{cart=JSON.parse(localStorage.getItem('mak_cart'))||{}}catch{cart={}}}
-function saveCart(){localStorage.setItem('mak_cart',JSON.stringify(cart));renderCart()}
-function saveCatalog(){localStorage.setItem('mak_catalog',JSON.stringify(catalog));render()}
-async function init(){try{const r=await fetch('./catalog.json',{cache:'no-store'});if(!r.ok)throw Error();window.published=await r.json()}catch{window.published={settings:{currency:'MVR',whatsapp:''},products:[]}}catalog=window.published;loadCart();render();$('#year').textContent=new Date().getFullYear()}
-function render(){let cats=[...new Set(catalog.products.map(p=>p.category))];let selected=$('#category').value;$('#category').innerHTML='<option value="">All categories</option>'+cats.map(c=>`<option value="${safe(c)}">${safe(c)}</option>`).join('');$('#category').value=cats.includes(selected)?selected:'';let q=$('#search').value.toLowerCase(),c=$('#category').value;let list=catalog.products.filter(p=>(!c||p.category===c)&&`${p.name} ${p.description} ${p.category}`.toLowerCase().includes(q));if($('#sort').value==='low')list.sort((a,b)=>a.price-b.price);if($('#sort').value==='high')list.sort((a,b)=>b.price-a.price);
-$('#products').innerHTML=list.map(p=>`<article class="product"><div class="photo">${p.image&&/^https:\/\//.test(p.image)?`<img src="${safe(p.image)}" alt="${safe(p.name)}" loading="lazy">`:safe(p.emoji||'📦')}</div><div class="info"><div class="tag">${safe(p.category)}</div><h3>${safe(p.name)}</h3><div class="desc">${safe(p.description)}</div><div class="price">${money(p.price)}</div><button class="btn full" data-add="${safe(p.id)}" ${p.stock<1?'disabled':''}>${p.stock<1?'Out of stock':'Add to cart'}</button></div></article>`).join('')||'<div class="empty">No products found.</div>';
-renderCart()}
-function renderCart(){let sum=0,n=0;$('#cartitems').innerHTML=Object.entries(cart).map(([id,qty])=>{let p=catalog.products.find(p=>p.id===id);if(!p)return '';qty=Math.min(qty,p.stock);if(qty<1)return '';sum+=p.price*qty;n+=qty;return `<div class="cartitem"><div class="row"><b>${safe(p.name)}</b><span>${money(p.price*qty)}</span></div><div class="qty"><button data-qty="${safe(id)}" data-delta="-1">−</button>${qty}<button data-qty="${safe(id)}" data-delta="1">+</button></div></div>`}).join('')||'<p class="empty">Your cart is empty.</p>';$('#count').textContent=n;$('#total').textContent=money(sum);$('#checkout').querySelector('button').disabled=n===0}
-document.addEventListener('click',e=>{let a=e.target.closest('[data-add]');if(a){let id=a.dataset.add,p=catalog.products.find(p=>p.id===id);if(p&&p.stock>(cart[id]||0)){cart[id]=(cart[id]||0)+1;saveCart();openCart()}}let q=e.target.closest('[data-qty]');if(q){let id=q.dataset.qty,p=catalog.products.find(p=>p.id===id);cart[id]=Math.max(0,Math.min(p?.stock||0,(cart[id]||0)+Number(q.dataset.delta)));if(!cart[id])delete cart[id];saveCart()}});
-function openCart(){$('#overlay').classList.add('show');$('#drawer').classList.add('show')}function closeCart(){$('#overlay').classList.remove('show');$('#drawer').classList.remove('show')}
-$('#cartBtn').onclick=openCart;$('#close').onclick=closeCart;$('#overlay').onclick=closeCart;
-['search','category','sort'].forEach(x=>$('#'+x).addEventListener(x==='search'?'input':'change',render));
-$('#checkout').onsubmit=e=>{e.preventDefault();let items=Object.entries(cart).map(([id,qty])=>({p:catalog.products.find(p=>p.id===id),qty})).filter(x=>x.p&&x.qty>0);if(!items.length)return;let wa=(catalog.settings.whatsapp||'').replace(/\D/g,'');if(!wa){$('#checkoutmsg').textContent='The store owner must set a WhatsApp number before orders can be sent.';return}let total=items.reduce((s,x)=>s+x.p.price*x.qty,0);let msg=`MAK's Power Zone — New order request\n\n`+items.map(x=>`${x.p.name} × ${x.qty} — ${money(x.p.price*x.qty)}`).join('\n')+`\n\nTotal: ${money(total)}\nName: ${$('#customer').value}\nPhone: ${$('#phone').value}\nDelivery location: ${$('#address').value}\nNotes: ${$('#notes').value}\n\nPlease confirm availability, delivery and payment.`;window.open(`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`,'_blank','noopener');$('#checkoutmsg').textContent='WhatsApp opened. Tap Send in WhatsApp to submit your order request.'};
-$('#owner').onclick=()=>{location.href='./admin.html'};
+:root{--bg:#0a1220;--card:#131f33;--line:#24344f;--text:#eef3fb;--mute:#93a4bf;--accent:#5eb4ff;--ok:#5ee0a0;--bad:#ff7a7a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 -apple-system,system-ui,"Segoe UI",sans-serif;padding:20px;max-width:720px;margin-inline:auto}
+h1{font-size:28px;margin:8px 0 4px}
+h2{font-size:20px;margin:0 0 12px}
+a,.link{color:var(--accent);background:none;border:0;padding:0;font:inherit;text-decoration:underline;cursor:pointer}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0}
+label{display:block;margin:10px 0 4px;color:var(--mute);font-size:14px}
+input{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#0d1727;color:var(--text);font:inherit}
+button.btn{background:var(--accent);color:#06101e;border:0;border-radius:10px;padding:11px 16px;font:600 15px inherit;font-family:inherit;margin:12px 8px 0 0;cursor:pointer}
+button.danger{background:var(--bad)}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.price{font-weight:700;color:var(--ok);white-space:nowrap}
+.msg{color:var(--mute);min-height:1.4em;margin-top:10px}
+.msg.err{color:var(--bad)}
+.edit{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.edit input{width:auto;flex:1 1 110px}
+.hidden{display:none}
+</style>
+</head>
+<body>
 
-init();
+<div id="shop">
+  <h1>MAK’s Power Zone</h1>
+  <p style="color:var(--mute);margin-top:0">Products and prices</p>
+  <div class="card"><div id="products">Loading products…</div></div>
+  <a href="#owner" id="goOwner">Owner login</a>
+</div>
+
+<div id="owner" class="hidden">
+  <a href="#" id="goShop">← Back to shop</a>
+  <h1>Owner dashboard</h1>
+
+  <div id="loginBox" class="card">
+    <h2>Owner sign in</h2>
+    <label for="email">Email</label>
+    <input id="email" type="email" autocomplete="username">
+    <label for="pass">Password</label>
+    <input id="pass" type="password" autocomplete="current-password">
+    <button class="btn" id="signIn">Sign in</button>
+    <button class="btn" id="forgot">Forgot password?</button>
+    <div class="msg" id="loginMsg"></div>
+  </div>
+
+  <div id="adminBox" class="card hidden">
+    <h2>Manage products</h2>
+    <div class="edit">
+      <input id="newName" placeholder="Product name">
+      <input id="newPrice" placeholder="Price" inputmode="decimal">
+      <button class="btn" id="addBtn" style="margin:0">Add product</button>
+    </div>
+    <div class="msg" id="adminMsg"></div>
+    <div id="adminList"></div>
+    <button class="btn" id="signOut">Sign out</button>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getDatabase, ref, onValue, push, set, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD5vgIzZED-2H_aaLj5BDzNFxJTApl0MkY",
+  authDomain: "makspowerzone2026.firebaseapp.com",
+  databaseURL: "https://makspowerzone2026-default-rtdb.firebaseio.com",
+  projectId: "makspowerzone2026",
+  appId: "1:339596539588:web:d18811dbdc4103c1e43b91"
+};
+
+// Owner accounts (the database rules enforce this too)
+const OWNER_UIDS = ["ReKtenBN4agkyaLyJ22mVmGrWzz2", "pd4PaKqieBePCsekXgLinwbNtfX2"];
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money = p => isNaN(Number(p)) ? esc(p) : Number(p).toFixed(2);
+let products = {}, isOwner = false;
+
+function route(){
+  const owner = location.hash === "#owner";
+  $("shop").classList.toggle("hidden", owner);
+  $("owner").classList.toggle("hidden", !owner);
+}
+window.addEventListener("hashchange", route); route();
+
+// Products (public read)
+onValue(ref(db, "products"), snap => {
+  products = snap.val() || {};
+  render();
+}, err => { $("products").textContent = "Could not load products: " + err.message; });
+
+function render(){
+  const ids = Object.keys(products);
+  $("products").innerHTML = ids.length
+    ? ids.map(id => `<div class="row"><span>${esc(products[id].name)}</span><span class="price">${money(products[id].price)}</span></div>`).join("")
+    : "No products yet.";
+  $("adminList").innerHTML = ids.map(id => `
+    <div class="row edit" data-id="${id}">
+      <input class="n" value="${esc(products[id].name)}">
+      <input class="p" value="${esc(products[id].price)}" inputmode="decimal">
+      <button class="btn save" style="margin:0">Save</button>
+      <button class="btn danger del" style="margin:0">Delete</button>
+    </div>`).join("");
+}
+
+// Auth
+onAuthStateChanged(auth, user => {
+  isOwner = !!user && OWNER_UIDS.includes(user.uid);
+  $("loginBox").classList.toggle("hidden", isOwner);
+  $("adminBox").classList.toggle("hidden", !isOwner);
+  if (user && !isOwner){
+    $("loginMsg").className = "msg err";
+    $("loginMsg").textContent = "This account is not an owner account.";
+    signOut(auth);
+  }
+});
+
+$("signIn").onclick = async () => {
+  const m = $("loginMsg"); m.className = "msg"; m.textContent = "Signing in…";
+  try {
+    await signInWithEmailAndPassword(auth, $("email").value.trim(), $("pass").value);
+    m.textContent = "";
+  } catch(e){ m.className = "msg err"; m.textContent = "Sign in failed: " + e.code; }
+};
+$("forgot").onclick = async () => {
+  const m = $("loginMsg"), email = $("email").value.trim();
+  if (!email){ m.className = "msg err"; m.textContent = "Enter your email first."; return; }
+  try { await sendPasswordResetEmail(auth, email); m.className = "msg"; m.textContent = "Reset email sent."; }
+  catch(e){ m.className = "msg err"; m.textContent = "Could not send reset: " + e.code; }
+};
+$("signOut").onclick = () => signOut(auth);
+
+// Owner edits
+const say = (t, bad) => { const m = $("adminMsg"); m.className = "msg" + (bad ? " err" : ""); m.textContent = t; };
+$("addBtn").onclick = async () => {
+  const name = $("newName").value.trim(), price = $("newPrice").value.trim();
+  if (!name || !price) return say("Enter a name and a price.", true);
+  try { await set(push(ref(db, "products")), { name, price }); $("newName").value = $("newPrice").value = ""; say("Product added."); }
+  catch(e){ say("Could not add: " + e.message, true); }
+};
+$("adminList").onclick = async e => {
+  const row = e.target.closest(".row"); if (!row) return;
+  const id = row.dataset.id;
+  try {
+    if (e.target.classList.contains("save")){
+      await set(ref(db, "products/" + id), { name: row.querySelector(".n").value.trim(), price: row.querySelector(".p").value.trim() });
+      say("Saved.");
+    } else if (e.target.classList.contains("del")){
+      if (confirm("Delete this product?")){ await remove(ref(db, "products/" + id)); say("Deleted."); }
+    }
+  } catch(err){ say("Could not save: " + err.message, true); }
+};
 </script>
-<script type="module" src="./store-firebase.js"></script></body></html>
+</body>
+</html>
