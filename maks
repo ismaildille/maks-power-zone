@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAK’s Power Zone</title>
+<style>
+:root{--bg:#0a1220;--card:#131f33;--line:#24344f;--text:#eef3fb;--mute:#93a4bf;--accent:#5eb4ff;--ok:#5ee0a0;--bad:#ff7a7a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 -apple-system,system-ui,"Segoe UI",sans-serif;padding:20px;max-width:720px;margin-inline:auto}
+h1{font-size:28px;margin:8px 0 4px}
+h2{font-size:20px;margin:0 0 12px}
+a,.link{color:var(--accent);background:none;border:0;padding:0;font:inherit;text-decoration:underline;cursor:pointer}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0}
+label{display:block;margin:10px 0 4px;color:var(--mute);font-size:14px}
+input{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#0d1727;color:var(--text);font:inherit}
+button.btn{background:var(--accent);color:#06101e;border:0;border-radius:10px;padding:11px 16px;font:600 15px inherit;font-family:inherit;margin:12px 8px 0 0;cursor:pointer}
+button.danger{background:var(--bad)}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.price{font-weight:700;color:var(--ok);white-space:nowrap}
+.msg{color:var(--mute);min-height:1.4em;margin-top:10px}
+.msg.err{color:var(--bad)}
+.edit{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.edit input{width:auto;flex:1 1 110px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+
+<div id="shop">
+  <h1>MAK’s Power Zone</h1>
+  <p style="color:var(--mute);margin-top:0">Products and prices</p>
+  <div class="card"><div id="products">Loading products…</div></div>
+  <a href="#owner" id="goOwner">Owner login</a>
+</div>
+
+<div id="owner" class="hidden">
+  <a href="#" id="goShop">← Back to shop</a>
+  <h1>Owner dashboard</h1>
+
+  <div id="loginBox" class="card">
+    <h2>Owner sign in</h2>
+    <label for="email">Email</label>
+    <input id="email" type="email" autocomplete="username">
+    <label for="pass">Password</label>
+    <input id="pass" type="password" autocomplete="current-password">
+    <button class="btn" id="signIn">Sign in</button>
+    <button class="btn" id="forgot">Forgot password?</button>
+    <div class="msg" id="loginMsg"></div>
+  </div>
+
+  <div id="adminBox" class="card hidden">
+    <h2>Manage products</h2>
+    <div class="edit">
+      <input id="newName" placeholder="Product name">
+      <input id="newPrice" placeholder="Price" inputmode="decimal">
+      <button class="btn" id="addBtn" style="margin:0">Add product</button>
+    </div>
+    <div class="msg" id="adminMsg"></div>
+    <div id="adminList"></div>
+    <button class="btn" id="signOut">Sign out</button>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getDatabase, ref, onValue, push, set, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD5vgIzZED-2H_aaLj5BDzNFxJTApl0MkY",
+  authDomain: "makspowerzone2026.firebaseapp.com",
+  databaseURL: "https://makspowerzone2026-default-rtdb.firebaseio.com",
+  projectId: "makspowerzone2026",
+  appId: "1:339596539588:web:d18811dbdc4103c1e43b91"
+};
+
+// Owner accounts (the database rules enforce this too)
+const OWNER_UIDS = ["ReKtenBN4agkyaLyJ22mVmGrWzz2", "pd4PaKqieBePCsekXgLinwbNtfX2"];
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money = p => isNaN(Number(p)) ? esc(p) : Number(p).toFixed(2);
+let products = {}, isOwner = false;
+
+function route(){
+  const owner = location.hash === "#owner";
+  $("shop").classList.toggle("hidden", owner);
+  $("owner").classList.toggle("hidden", !owner);
+}
+window.addEventListener("hashchange", route); route();
+
+// Products (public read)
+onValue(ref(db, "products"), snap => {
+  products = snap.val() || {};
+  render();
+}, err => { $("products").textContent = "Could not load products: " + err.message; });
+
+function render(){
+  const ids = Object.keys(products);
+  $("products").innerHTML = ids.length
+    ? ids.map(id => `<div class="row"><span>${esc(products[id].name)}</span><span class="price">${money(products[id].price)}</span></div>`).join("")
+    : "No products yet.";
+  $("adminList").innerHTML = ids.map(id => `
+    <div class="row edit" data-id="${id}">
+      <input class="n" value="${esc(products[id].name)}">
+      <input class="p" value="${esc(products[id].price)}" inputmode="decimal">
+      <button class="btn save" style="margin:0">Save</button>
+      <button class="btn danger del" style="margin:0">Delete</button>
+    </div>`).join("");
+}
+
+// Auth
+onAuthStateChanged(auth, user => {
+  isOwner = !!user && OWNER_UIDS.includes(user.uid);
+  $("loginBox").classList.toggle("hidden", isOwner);
+  $("adminBox").classList.toggle("hidden", !isOwner);
+  if (user && !isOwner){
+    $("loginMsg").className = "msg err";
+    $("loginMsg").textContent = "This account is not an owner account.";
+    signOut(auth);
+  }
+});
+
+$("signIn").onclick = async () => {
+  const m = $("loginMsg"); m.className = "msg"; m.textContent = "Signing in…";
+  try {
+    await signInWithEmailAndPassword(auth, $("email").value.trim(), $("pass").value);
+    m.textContent = "";
+  } catch(e){ m.className = "msg err"; m.textContent = "Sign in failed: " + e.code; }
+};
+$("forgot").onclick = async () => {
+  const m = $("loginMsg"), email = $("email").value.trim();
+  if (!email){ m.className = "msg err"; m.textContent = "Enter your email first."; return; }
+  try { await sendPasswordResetEmail(auth, email); m.className = "msg"; m.textContent = "Reset email sent."; }
+  catch(e){ m.className = "msg err"; m.textContent = "Could not send reset: " + e.code; }
+};
+$("signOut").onclick = () => signOut(auth);
+
+// Owner edits
+const say = (t, bad) => { const m = $("adminMsg"); m.className = "msg" + (bad ? " err" : ""); m.textContent = t; };
+$("addBtn").onclick = async () => {
+  const name = $("newName").value.trim(), price = $("newPrice").value.trim();
+  if (!name || !price) return say("Enter a name and a price.", true);
+  try { await set(push(ref(db, "products")), { name, price }); $("newName").value = $("newPrice").value = ""; say("Product added."); }
+  catch(e){ say("Could not add: " + e.message, true); }
+};
+$("adminList").onclick = async e => {
+  const row = e.target.closest(".row"); if (!row) return;
+  const id = row.dataset.id;
+  try {
+    if (e.target.classList.contains("save")){
+      await set(ref(db, "products/" + id), { name: row.querySelector(".n").value.trim(), price: row.querySelector(".p").value.trim() });
+      say("Saved.");
+    } else if (e.target.classList.contains("del")){
+      if (confirm("Delete this product?")){ await remove(ref(db, "products/" + id)); say("Deleted."); }
+    }
+  } catch(err){ say("Could not save: " + err.message, true); }
+};
+</script>
+</body>
+</html>
